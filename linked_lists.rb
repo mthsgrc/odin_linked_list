@@ -54,9 +54,17 @@ class LinkedList
   end
 
   def value_at(index)
-    
+    return "No Nodes in List" if @head.nil?
 
-    
+    node = @head
+    count = 0
+
+    until count == index
+      node = node.next_node
+      count += 1
+    end
+
+    "Value at index #{index} is #{node.value}"
   end
 
   def pop
@@ -80,8 +88,7 @@ end
 
 
 list = LinkedList.new
-# binding.pry
-# puts list.size
+
 
 
 puts list.size
@@ -94,6 +101,13 @@ list.prepend(0)
 
 list.append(4)
 
-puts list.values_at(2)
+list.append(55)
+
+puts list.value_at(0)
+puts list.value_at(1)
+puts list.value_at(2)
+puts list.value_at(3)
+
+puts list.value_at(5)
 
 puts list.size
