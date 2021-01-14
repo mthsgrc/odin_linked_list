@@ -63,6 +63,20 @@ class LinkedList
     "Value at index #{index} is #{node.value}"
   end
 
+  def find(data)
+    node = @head
+    count = 0
+
+    while node
+      if node.value == data
+        return "Value #{data} found at index #{count}."        
+      end
+      node = node.next_node
+      count += 1
+    end
+    "The value #{data} didn't found."
+  end
+
   def pop
     return "No Nodes in List" if @head.nil?
     @head = nil if !@head.next_node
@@ -79,7 +93,7 @@ class LinkedList
 
   def contains?(data)
     node = @head
-    while node 
+    while node
       # binding.pry
       if node.value == data
         return true
@@ -87,6 +101,15 @@ class LinkedList
       node = node.next_node
     end
     false
+  end
+
+  def to_s
+    node = @head
+    while node
+      print "(#{node.value}) -> "
+      node = node.next_node
+    end
+    print "nil\n"
   end
 
 end
@@ -122,15 +145,22 @@ list.append(4)
 
 
 list.append(55)
-puts list.print_tail
+
+list.to_s
+# puts list.print_tail
+
+# puts list.find(0)
+# puts list.find(55)
+# puts list.find(-1)
+
 # puts list.size
 
-puts list.contains?(0)
-puts list.contains?(-1)
-puts list.contains?(2)
-puts list.contains?(3)
-puts list.contains?(4)
-puts list.contains?(55)
+# puts list.contains?(0)
+# puts list.contains?(-1)
+# puts list.contains?(2)
+# puts list.contains?(3)
+# puts list.contains?(4)
+# puts list.contains?(55)
 
 
 
@@ -141,4 +171,4 @@ puts list.contains?(55)
 
 # puts list.value_at(5)
 
-puts list.size
+# puts list.size
