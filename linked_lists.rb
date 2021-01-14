@@ -1,7 +1,4 @@
-require "pry"
-
 class LinkedList
-
   attr_accessor :head, :tail
 
   def initialize
@@ -9,7 +6,7 @@ class LinkedList
     @tail = nil
   end
 
-  def append(data) #add to list end
+  def append(data) 
     if @head.nil?
       @head = Node.new(data)
       @tail = @head
@@ -19,8 +16,7 @@ class LinkedList
     end
   end
 
-  def prepend(data) #add to list start
-    # binding.pry
+  def prepend(data) 
     if @head.nil?
       @head = Node.new(data)
       @tail = @head
@@ -69,7 +65,7 @@ class LinkedList
 
     while node
       if node.value == data
-        return "Value #{data} found at index #{count}."        
+        return "Value #{data} found at index #{count}."
       end
       node = node.next_node
       count += 1
@@ -94,7 +90,6 @@ class LinkedList
   def contains?(data)
     node = @head
     while node
-      # binding.pry
       if node.value == data
         return true
       end
@@ -111,64 +106,36 @@ class LinkedList
     end
     print "nil\n"
   end
-
 end
 
 class Node
   attr_accessor :value, :next_node
-
   def initialize(value, next_node = nil)
     @value = value
     @next_node = next_node
   end
 end
 
-
-
 list = LinkedList.new
 
-
-
 list.append(2)
-puts list.print_tail
-
 list.prepend(1)
-puts list.print_tail
-
 list.append(3)
-puts list.print_tail
-
 list.prepend(0)
-puts list.print_tail
-
 list.append(4)
-
-
 list.append(55)
 
 list.to_s
-# puts list.print_tail
 
-# puts list.find(0)
-# puts list.find(55)
-# puts list.find(-1)
+puts list.find(55)
+puts list.find(-1)
 
-# puts list.size
+puts list.contains?(0)
+puts list.contains?(-1)
+puts list.contains?(55)
 
-# puts list.contains?(0)
-# puts list.contains?(-1)
-# puts list.contains?(2)
-# puts list.contains?(3)
-# puts list.contains?(4)
-# puts list.contains?(55)
+puts list.value_at(0)
 
+puts list.value_at(3)
 
-
-# puts list.value_at(0)
-# puts list.value_at(1)
-# puts list.value_at(2)
-# puts list.value_at(3)
-
-# puts list.value_at(5)
-
-# puts list.size
+puts list.size
